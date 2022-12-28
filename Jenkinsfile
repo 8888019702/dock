@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage ('serviceinstall'){
             steps{
-                sh "docker stop master"
-                sh "docker rm master"
+               // sh "docker stop master"
+                //sh "docker rm master"
                 sh "rm -rf *"
                 sh " yum install git -y"
                 sh "yum install docker -y"
@@ -20,12 +20,12 @@ pipeline {
             agent{
                 label{
                     label 'built-in'
-                    customWorkspace "/mnt/psd"
+                    customWorkspace "/mnt/avi"
                 }
             }
             steps{
-                sh "chmod -R 777 /mnt/psd/index.html "
-                sh "docker cp /mnt/psd/index.html master:/usr/local/apache2/htdocs"
+                sh "chmod -R 777 /mnt/avi/index.html "
+                sh "docker cp /mnt/avi/index.html master:/usr/local/apache2/htdocs"
                 
           }
         }
