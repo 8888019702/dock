@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage ('serviceinstall'){
             steps{
-                sh "docker stop master"
-                sh "docker rm master"
+                sh "docker stop 22Q2"
+                sh "docker rm 22Q2"
                 sh "rm -rf *"
                 sh " yum install git -y"
                 sh "yum install docker -y"
@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('createconatainer'){
             steps{
-                sh "docker run -itd -p 80:80 --name master httpd"
+                sh "docker run -itd -p 80:80 --name 22Q2 httpd"
             }
         }
         stage('deploy') { 
@@ -24,8 +24,8 @@ pipeline {
                 }
             }
             steps{
-                sh "chmod -R 777 /mnt/psd/index.html "
-                sh "docker cp /mnt/psd/index.html master:/usr/local/apache2/htdocs"
+                sh "chmod -R 777 /mnt/shubzz/index.html "
+                sh "docker cp /mnt/shubzz/index.html 22Q2:/usr/local/apache2/htdocs"
                 
           }
         }
