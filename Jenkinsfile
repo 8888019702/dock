@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage ('serviceinstall'){
             steps{
-                sh "docker stop 22Q2"
-                sh "docker rm 22Q2"
+                //sh "docker stop 22Q2"
+                //sh "docker rm 22Q2"
                 sh "rm -rf *"
                 sh " yum install git -y"
                 sh "yum install docker -y"
@@ -13,14 +13,14 @@ pipeline {
         }
         stage ('createconatainer'){
             steps{
-                sh "docker run -itd -p 80:80 --name 22Q2 httpd"
+                sh "docker run -itd -p 100:80 --name 22Q2 httpd"
             }
         }
         stage('deploy') { 
             agent{
                 label{
                     label 'built-in'
-                    customWorkspace "/mnt/psd"
+                    customWorkspace "/mnt/shubzz"
                 }
             }
             steps{
