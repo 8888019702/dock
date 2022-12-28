@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage ('serviceinstall'){
             steps{
-                sh "docker stop master"
-                sh "docker rm master"
+                //sh "docker stop master"
+                //sh "docker rm master"
                 sh "rm -rf *"
                 sh " yum install git -y"
                 sh "yum install docker -y"
@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('createconatainer'){
             steps{
-                sh "docker run -itd -p 80:80 --name master httpd"
+                sh "docker run -itd -p 90:80 --name 22Q1 httpd"
             }
         }
         stage('deploy') { 
