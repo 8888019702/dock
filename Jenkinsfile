@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage ('serviceinstall'){
             steps{
-                //sh "docker stop master"
-                //sh "docker rm master"
+                sh "docker stop 22Q1"
+                sh "docker rm 22Q1"
                 sh "rm -rf *"
                 sh " yum install git -y"
                 sh "yum install docker -y"
@@ -25,7 +25,7 @@ pipeline {
             }
             steps{
                 sh "chmod -R 777 /mnt/psd/index.html "
-                sh "docker cp /mnt/psd/index.html master:/usr/local/apache2/htdocs"
+                sh "docker cp /mnt/psd/index.html 22Q1:/usr/local/apache2/htdocs"
                 
           }
         }
